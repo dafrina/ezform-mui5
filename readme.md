@@ -1,4 +1,4 @@
-# EZForm is an easy form and field-level validation library for react using Material UI components
+# EZForm is an easy form and field-level validation library for react using MUI components
 
 ## Build Project
 
@@ -10,24 +10,22 @@ npm install -g typescript; npm install; npm run build;
 
 You can find a working demo here:
 
-(https://codesandbox.io/s/restless-shape-7rjl6)
+(https://codesandbox.io/s/mui5-wl388c)
 
 ## Install
 
 ````
 npm i moment --save
-npm i @date-io/moment@1.3.13 --save
-npm i @material-ui/core --save
-npm i @material-ui/lab  --save
-npm i @material-ui/pickers --save
-npm i @ezform/mui --save
+npm i @mui/material @emotion/react @emotion/styled --save
+npm i @mui/x-date-pickers --save
+npm i @ezform/mui5 --save
 ````
 
-(https://www.npmjs.com/package/@ezform/mui)
+(https://www.npmjs.com/package/@ezform/mui5)
 
 ## Usage
 
-> This package makes use of @ezform/core and Material UI to implement a set of form fields.
+> This package makes use of @ezform/core and MUI to implement a set of form fields.
 > 
 > [Click Here](https://github.com/dafrina/ezform) to learn more about the core library.
 
@@ -86,7 +84,7 @@ const config = EzformMuiConfig();
 
 ## Components
 
-This library provides a basic set of form fields based on Material UI components. You can also create your own components to use with EZForm. [Click here](https://github.com/dafrina/ezform#creating-your-own-fields) to find out how.
+This library provides a basic set of form fields based on MUI components. You can also create your own components to use with EZForm. [Click here](https://github.com/dafrina/ezform#creating-your-own-fields) to find out how.
 
 ### FieldBase interface
 
@@ -100,6 +98,19 @@ This interface acts as a base for all field properties. All form components desc
 - readonly?: boolean;
 - label?: string;
 - defaultValue?: any;
+
+### OptionType
+
+This interface is used for inputs that take list options (like Selects, Radio Groups etc.)
+
+````
+type OptionType = {
+  key: string;
+  value: string | number;
+  label: string;
+  disabled?: boolean;
+}
+````
 
 ### FieldText
 
@@ -122,21 +133,21 @@ Same as text field, but for passwords
 
 Select dropdown
 
-- options: { key: string; value: string; label: string; disabled?: boolean }[];
+- options: OptionType[];
 - variant?: "filled" | "outlined" | "standard";
 
 ### FieldMultiSelect
 
 Simple multiple select dropdown
 
-- options: { key: string; value: string; label: string; disabled?: boolean }[];
+- options: OptionType[];
 - variant?: "filled" | "outlined" | "standard";
 
 ### FieldComboSelect
 
 Multiple select dropdown with chips rendering selected options
 
-- options: { key: string; value: string; label: string; disabled?: boolean }[];
+- options: OptionType[];
 - variant?: "filled" | "outlined" | "standard";
 - color?: "primary" | "secondary";
 - chipVariant?: "default" | "outlined";
@@ -161,43 +172,41 @@ Switch input
 
 Multiple checkboxes under the same field name
 
-- options: { key: string; value: string; label: string; disabled?: boolean }[];
+- options: OptionType[];
 - color?: "default" | "primary" | "secondary";
 
 ### FieldRadioGroup
 
 Multiple radio inputs under the same field name
 
-- options: { key: string; value: string; label: string; disabled?: boolean }[];
+- options: OptionType[];
 - color?: "default" | "primary" | "secondary";
 
 ### FieldSearchSelect
 
 Experimental select with search ability
 
-- options: { key: string; value: string; label: string; disabled?: boolean }[];
+- options: OptionType[];
 - variant?: "filled" | "outlined" | "standard";
 
 ### FieldDate
 
-Material UI's date input. Please visit (https://material-ui-pickers.dev) for details on what these props do.
+MUI's date input.
 
 The date will be stored in the form fields as a UNIX timestamp. Default type is "date".
 
 - format: string;
-- type?: "date" | "datetime" | "time"
+- placeholder?: string;
+- closeOnSelect?: boolean;
 - disableToolbar?: boolean;
-- autoOk?: boolean;
 - variant?: "filled" | "outlined" | "standard";
-- minDate?: ParsableDate;
-- minDateMessage?: ReactNode;
-- maxDate?: ParsableDate;
-- maxDateMessage?: ReactNode;
-- initialDate?: ParsableDate;
+- minDate?: any;
+- maxDate?: any;
 - disablePast?: boolean;
 - disableFuture?: boolean;
+- type?: "date" | "datetime" | "time";
 
-EZForm uses `@date-io/moment` to convert dates
+EZForm uses `moment` to convert dates
 
 ### FieldFile
 
