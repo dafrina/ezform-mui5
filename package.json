@@ -1,6 +1,6 @@
 {
   "name": "@ezform/mui5",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MUI form components for use with EZForm React validation and form library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,7 +29,7 @@
     "typescript": "^4.4.2"
   },
   "dependencies": {
-    "@ezform/core": "4.1.0"
+    "@ezform/core": "4.1.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.5",
